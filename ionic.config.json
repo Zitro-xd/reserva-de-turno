@@ -1,0 +1,8 @@
+{
+  "name": "Reserva de Turno",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "3d7abd7b"
+}
