@@ -1,3 +1,45 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reserva de Turnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label>Fecha</ion-label>
+    <ion-datetime
+      presentation="date"
+      [(ngModel)]="fechaSeleccionada"
+      (ionChange)="onFechaCambiada($event)">
+    </ion-datetime>
+  </ion-item>
+
+  <h3>Horarios disponibles:</h3>
+
+  <ion-list *ngIf="horarios.length > 0">
+    <ion-item
+      *ngFor="let h of horarios"
+      [class.reservado]="!h.disponible"
+      [button]="h.disponible"
+      [disabled]="!h.disponible"
+      (click)="reservarHorario(h)">
+
+      <ion-label>{{ h.hora }}</ion-label>
+      <ion-label>{{ h.disponible ? 'Disponible' : 'Reservado' }}</ion-label>
+
+      <ion-button *ngIf="h.disponible" (click)="reservarHorario(h)">
+        Reservar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <p *ngIf="horarios.length === 0">
+    No hay turnos disponibles para esta fecha.
+  </p>
+
+  <ion-text>
+    <p><strong>Turnos disponibles:</strong> {{ turnosDisponibles }}</p>
+  </ion-text>
+
+</ion-content>

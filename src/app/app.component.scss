@@ -1,0 +1,9 @@
+ion-item.reservado {
+  --background: #f4f4f4;
+  opacity: 0.6;
+
+  ion-label {
+    text-decoration: line-through;
+    color: var(--ion-color-medium);
+  }
+}
